@@ -5,10 +5,10 @@ require 'merb-core'
 require 'merb-core/tasks/merb'
 
 GEM_NAME = "icomme"
-AUTHOR = "Your Name"
-EMAIL = "Your Email"
-HOMEPAGE = "http://merbivore.com/"
-SUMMARY = "Merb Slice that provides ..."
+AUTHOR = "Legodata"
+EMAIL = "alx.girard@gmail.com"
+HOMEPAGE = "http://www.legodata.com/"
+SUMMARY = "Merb Slice that provides an e-commerce framework for integration in a full Merb app"
 GEM_VERSION = "1.0.11"
 
 spec = Gem::Specification.new do |s|

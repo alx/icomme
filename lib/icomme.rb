@@ -21,9 +21,9 @@ if defined?(Merb::Plugins)
   module Icomme
     
     # Slice metadata
-    self.description = "Icomme is a chunky Merb slice!"
-    self.version = "0.0.1"
-    self.author = "Engine Yard"
+    self.description = "E-commerce slice to be integrated inside a Merb application"
+    self.version = "1.0.11"
+    self.author = "Legodata"
     
     # Stub classes loaded hook - runs before LoadClasses BootLoader
     # right after a slice's classes have been loaded internally.
