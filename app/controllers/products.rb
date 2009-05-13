@@ -1,4 +1,4 @@
-class Products < Application
+class Icomme::Products < Icomme::Application
   
   # GET /products
   def index

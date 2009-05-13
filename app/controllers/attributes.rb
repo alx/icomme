@@ -1,4 +1,4 @@
-class Attributes < Application
+class Icomme::Attributes < Icomme::Application
   
   # GET /attributes
   def index
