@@ -1,0 +1,76 @@
+Icomme
+======
+
+A slice for the Merb framework.
+
+------------------------------------------------------------------------------
+   
+
+To see all available tasks for Icomme run:
+
+rake -T slices:icomme
+
+------------------------------------------------------------------------------
+
+Instructions for installation:
+
+file: config/init.rb
+
+# add the slice as a regular dependency
+
+dependency 'icomme'
+
+# if needed, configure which slices to load and in which order
+
+Merb::Plugins.config[:merb_slices] = { :queue => ["Icomme", ...] }
+
+# optionally configure the plugins in a before_app_loads callback
+
+Merb::BootLoader.before_app_loads do
+  
+  Merb::Slices::config[:icomme][:option] = value
+  
+end
+
+file: config/router.rb
+
+# example: /icomme/:controller/:action/:id
+
+add_slice(:Icomme)
+
+# example: /:lang/:controller/:action/:id
+
+add_slice(:Icomme, :path => ':lang')
+
+# example: /:controller/:action/:id
+
+slice(:Icomme)
+
+Normally you should also run the following rake task:
+
+rake slices:icomme:install
+
+------------------------------------------------------------------------------
+
+You can put your application-level overrides in:
+
+host-app/slices/icomme/app - controllers, models, views ...
+
+Templates are located in this order:
+
+1. host-app/slices/icomme/app/views/*
+2. gems/icomme/app/views/*
+3. host-app/app/views/*
+
+You can use the host application's layout by configuring the
+icomme slice in a before_app_loads block:
+
+Merb::Slices.config[:icomme] = { :layout => :application }
+
+By default :icomme is used. If you need to override
+stylesheets or javascripts, just specify your own files in your layout
+instead/in addition to the ones supplied (if any) in 
+host-app/public/slices/icomme.
+
+In any case don't edit those files directly as they may be clobbered any time
+rake icomme:install is run.
