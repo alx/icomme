@@ -42,38 +42,33 @@ if defined?(Merb::Plugins)
     def self.deactivate
     end
     
-    # Setup routes inside the host application
-    #
-    # @param scope<Merb::Router::Behaviour>
-    #  Routes will be added within this scope (namespace). In fact, any 
-    #  router behaviour is a valid namespace, so you can attach
-    #  routes at any level of your router setup.
-    #
-    # @note prefix your named routes with :icomme_
-    #   to avoid potential conflicts with global named routes.
     def self.setup_router(scope)
       ::Icomme::Router.setup(scope)
     end
     
   end
   
-  require "icomme/router"
-  
-  # Setup the slice layout for Icomme
-  #
-  # Use Icomme.push_path and Icomme.push_app_path
-  # to set paths to icomme-level and app-level paths. Example:
-  #
-  # Icomme.push_path(:application, Icomme.root)
-  # Icomme.push_app_path(:application, Merb.root / 'slices' / 'icomme')
-  # ...
-  #
-  # Any component path that hasn't been set will default to Icomme.root
-  #
-  # Or just call setup_default_structure! to setup a basic Merb MVC structure.
   Icomme.setup_default_structure!
+  use_orm :datamapper
+
+  # Merb dependencies
+  merb_version = ">= 1.0.9"
+  dependency 'merb-assets',               merb_version
+  dependency 'merb-cache',                merb_version
+  dependency 'merb-helpers',              merb_version
+  dependency 'merb_datamapper',           merb_version
+  dependency "merb-mailer",               merb_version
+  dependency "merb-param-protection",     merb_version
+  dependency "merb-exceptions",           merb_version
   
-  # Add dependencies for other Icomme classes below. Example:
-  # dependency "icomme/other"
+  # Datamapper dependencies
+  dm_version   = ">= 0.9.10"
+  dependency "dm-core",           dm_version         
+  dependency "dm-aggregates",     dm_version  
+  dependency "dm-timestamps",     dm_version
+  dependency "dm-is-nested_set",  dm_version
+  dependency "dm-is-tree",        dm_version
+  
+  require "icomme/router"
   
 end
