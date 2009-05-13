@@ -52,15 +52,12 @@ if defined?(Merb::Plugins)
     # @note prefix your named routes with :icomme_
     #   to avoid potential conflicts with global named routes.
     def self.setup_router(scope)
-      # example of a named route
-      scope.match('/index(.:format)').to(:controller => 'main', :action => 'index').name(:index)
-      # the slice is mounted at /icomme - note that it comes before default_routes
-      scope.match('/').to(:controller => 'main', :action => 'index').name(:home)
-      # enable slice-level default routes by default
-      scope.default_routes
+      ::Icomme::Router.setup(scope)
     end
     
   end
+  
+  require "icomme/router"
   
   # Setup the slice layout for Icomme
   #

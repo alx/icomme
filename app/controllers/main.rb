@@ -4,4 +4,12 @@ class Icomme::Main < Icomme::Application
     render
   end
   
+  def search
+    render
+  end
+  
+  def products
+    render
+  end
+  
 end
